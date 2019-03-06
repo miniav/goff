@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  goff:
+    container_name: goff
+    image: goff:dev
+    restart: always
+    volumes:
+      - $HOME/gocode:/root/gocode
+    hostname: goff
+    tty: true
