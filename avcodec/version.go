@@ -22,4 +22,3 @@ func Version() {
 	log.Printf("%+v", C.swscale_version())
 	log.Printf("%+v", C.avformat_version())
 }
-

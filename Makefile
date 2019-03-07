@@ -25,7 +25,7 @@ $(OSName): ffmpeg
 
 ffmpeg:
 	if [ -f $@-$($@_version).tar.bz2 ]; then \
-		if [ $(firstword $(shell sha256sum $@-$($@_version).tar.gz)) != $($@_sha256) ]; then \
+		if [ $(firstword $(shell sha256sum $@-$($@_version).tar.bz2)) != $($@_sha256) ]; then \
 			$(RM) $@-$($@_version).tar.bz2; \
 			make $@; \
 		fi; \

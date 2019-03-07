@@ -2,7 +2,10 @@ FROM buildpack-deps:stable-scm
 
 ARG VERSION=1.12
 
+WORKDIR /root
+
 COPY go${VERSION}.linux-amd64.tar.gz /root
+
 RUN tar -C /usr/local/ -zxvf /root/go${VERSION}.linux-amd64.tar.gz && \
   rm -f /root/go${VERSION}.linux-amd64.tar.gz
 
@@ -11,8 +14,9 @@ RUN sed -i 's/deb.debian.org/mirrors.163.com/g' /etc/apt/sources.list && \
 
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y --no-install-recommends \
-  tree vim bash-completion apt-utils man-db fish \
-  build-essential dialog less unzip dos2unix cmake locales autoconf nasm pkg-config
+  tree vim bash-completion apt-utils fish \
+  build-essential dialog less cmake locales nasm pkg-config && \
+  apt-get clean
 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
   echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen
@@ -26,11 +30,7 @@ RUN mkdir -p /root/.config/fish && \
 
 RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-RUN apt-get clean
-
 RUN mkdir -p /root/gocode/bin
-
-WORKDIR /root
 
 VOLUME /root/gocode
 
