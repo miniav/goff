@@ -6,5 +6,5 @@ void av_packet_free_personal(AVPacket *pkt) {
 
 void av_packet_zero(AVPacket *pkt) {
   pkt->data = NULL;
-    pkt->size = 0;
+  pkt->size = 0;
 }
