@@ -1,4 +1,4 @@
-package avcodec
+package postproc
 
 import (
 	"log"

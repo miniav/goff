@@ -1,4 +1,4 @@
-package avcodec
+package avformat
 
 import (
 	"log"

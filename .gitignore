@@ -2,4 +2,11 @@ ffmpeg-*
 *.tar.*
 *.test
 
+*.mp3
+*.ogg
+*.raw
+
+*.out
+*.gch
+
 install/

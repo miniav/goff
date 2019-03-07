@@ -1,19 +1,19 @@
-package avcodec
+package avformat
 
-// #include <libavcodec/avcodec.h>
+// #include <libavformat/avformat.h>
 import "C"
 
 // Version get the version
 func Version() uint {
-	return uint(C.avcodec_version())
+	return uint(C.avformat_version())
 }
 
 // License get the license
 func License() string {
-	return C.GoString(C.avcodec_license())
+	return C.GoString(C.avformat_license())
 }
 
 // Configuration Return the build-time configuration.
 func Configuration() string {
-	return C.GoString(C.avcodec_configuration())
+	return C.GoString(C.avformat_configuration())
 }
