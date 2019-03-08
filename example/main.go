@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/tosone/goff1/example/test1"
-	"github.com/tosone/goff1/example/test2"
+	"github.com/tosone/goff/example/test1"
+	"github.com/tosone/goff/example/test2"
 )
 
 func main() {

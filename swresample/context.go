@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/tosone/goff1/avutil"
+	"github.com/tosone/goff/avutil"
 )
 
 type Context C.struct_SwrContext
@@ -45,7 +45,7 @@ func NewContextOpt(ctx *Context, outCh int64, outSampleFmt avutil.SampleFmt, out
 }
 
 func (s *Context) SetOptString(name, value string, flag int) (err error) {
-	ret := int(C.av_opt_set((*C.struct_SwrContext)(s), C.CString(name), C.CString(value), C.int(flag)))
+	ret := int(C.av_opt_set(unsafe.Pointer((*C.struct_SwrContext)(s)), C.CString(name), C.CString(value), C.int(flag)))
 	if ret == 0 {
 		err = nil
 	}
@@ -53,7 +53,7 @@ func (s *Context) SetOptString(name, value string, flag int) (err error) {
 }
 
 func (s *Context) SetOptInt(name string, value int64, flag int) (err error) {
-	ret := int(C.av_opt_set_int((*C.struct_SwrContext)(s), C.CString(name), C.int64_t(value), C.int(flag)))
+	ret := int(C.av_opt_set_int(unsafe.Pointer((*C.struct_SwrContext)(s)), C.CString(name), C.int64_t(value), C.int(flag)))
 	if ret == 0 {
 		err = nil
 	}
@@ -61,7 +61,7 @@ func (s *Context) SetOptInt(name string, value int64, flag int) (err error) {
 }
 
 func (s *Context) SetOptSampleFmt(name string, fmt avutil.SampleFmt, flag int) (err error) {
-	ret := int(C.av_opt_set_sample_fmt((*C.struct_SwrContext)(s), C.CString(name), C.enum_AVSampleFormat(fmt), C.int(flag)))
+	ret := int(C.av_opt_set_sample_fmt(unsafe.Pointer((*C.struct_SwrContext)(s)), C.CString(name), C.enum_AVSampleFormat(fmt), C.int(flag)))
 	if ret == 0 {
 		err = nil
 	}

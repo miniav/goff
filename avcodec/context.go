@@ -6,7 +6,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/tosone/goff1/avutil"
+	"github.com/tosone/goff/avutil"
 )
 
 type Context C.AVCodecContext

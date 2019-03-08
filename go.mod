@@ -1,3 +1,3 @@
-module github.com/tosone/goff1
+module github.com/tosone/goff
 
 go 1.12

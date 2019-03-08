@@ -15,8 +15,8 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/tosone/goff1/avcodec"
-	"github.com/tosone/goff1/avutil"
+	"github.com/tosone/goff/avcodec"
+	"github.com/tosone/goff/avutil"
 )
 
 func main() {
