@@ -80,7 +80,7 @@ var AVERROR = AVERRORS{
 }
 
 func init() {
-	log.Println(AVERROR)
+	// log.Println(AVERROR)
 }
 
 // StrError get error description

@@ -9,4 +9,4 @@ ffmpeg-*
 *.out
 *.gch
 
-install/
+.idae/

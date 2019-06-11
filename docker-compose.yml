@@ -1,0 +1,12 @@
+version: '2.0'
+
+services:
+  goff:
+    container_name: goff
+    hostname: goff
+    build: $PWD
+    image: goff:dev
+    restart: always
+    tty: true
+    volumes:
+      - $PWD:/app/src/golang/miniav/goff
