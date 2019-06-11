@@ -5,7 +5,7 @@ services:
     container_name: goff
     hostname: goff
     build: $PWD
-    image: goff:dev
+    image: registry.cn-beijing.aliyuncs.com/tosone/goff:dev
     restart: always
     tty: true
     volumes:

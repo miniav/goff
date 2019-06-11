@@ -1,7 +1,8 @@
 FROM alpine:edge
 
-RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories && \
-  apk update && apk upgrade \
+# sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories && \
+
+RUN apk update && apk upgrade \
   && apk add --no-cache mdocml-apropos build-base coreutils ca-certificates autoconf automake libtool \
   bc tree vim git fish dialog less tzdata ffmpeg-dev go
 
