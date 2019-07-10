@@ -1,6 +1,6 @@
 package avutil
 
-// #include <libavutil/base64.h>
+// #include <base64.h>
 import "C"
 import (
 	"bytes"

@@ -2,22 +2,21 @@ package avutil
 
 import (
 	"encoding/hex"
-	"log"
 	"testing"
 )
 
 func TestRipemdNew(t *testing.T) {
-	testRipemd(128)
-	testRipemd(160)
-	testRipemd(256)
-	testRipemd(320)
+	testRipemd(128, t)
+	testRipemd(160, t)
+	testRipemd(256, t)
+	testRipemd(320, t)
 }
 
-func testRipemd(b uint) {
+func testRipemd(b uint, t *testing.T) {
 	if ripemd, err := RipemdNew(b); err != nil {
-		log.Fatal(err)
+		t.Fatal(err)
 	} else {
 		ripemd.Update([]byte("test"))
-		log.Printf("ripemd %d \"test\": %s\n", b, hex.EncodeToString(ripemd.Final()))
+		t.Logf("ripemd %d \"test\": %s\n", b, hex.EncodeToString(ripemd.Final()))
 	}
 }

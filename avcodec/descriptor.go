@@ -1,6 +1,6 @@
 package avcodec
 
-// #include <libavcodec/avcodec.h>
+// #include <descriptor.h>
 import "C"
 
 type Descriptor C.AVCodecDescriptor

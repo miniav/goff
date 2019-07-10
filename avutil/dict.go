@@ -1,6 +1,6 @@
 package avutil
 
-// #include <libavutil/dict.h>
+// #include <dict.h>
 import "C"
 
 type AVDictionary = C.struct_AVDictionary

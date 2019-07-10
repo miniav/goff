@@ -2,7 +2,7 @@ package avutil
 
 import "C"
 
-// #include <libavutil/crc.h>
+// #include <crc.h>
 import "C"
 import (
 	"fmt"

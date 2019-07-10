@@ -1,6 +1,6 @@
 package avcodec
 
-// #include <libavcodec/avcodec.h>
+// #include <version.h>
 import "C"
 
 // Version get the version

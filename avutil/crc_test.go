@@ -6,21 +6,21 @@ import (
 )
 
 func TestCRCNew(t *testing.T) {
-	testCRC(CRC8ATM, "8 atm")
-	testCRC(CRC8EBU, "8 ebu")
-	testCRC(CRC16ANSI, "16 ansi")
-	testCRC(CRC16ANSILE, "16 ansi le")
-	testCRC(CRC16CCITT, "16 ccitt")
-	testCRC(CRC24IEEE, "24 ieee")
-	testCRC(CRC32IEEE, "32 ieee")
-	testCRC(CRC32IEEELE, "32 ieee le")
+	testCRC(CRC8ATM, "8 atm", t)
+	testCRC(CRC8EBU, "8 ebu", t)
+	testCRC(CRC16ANSI, "16 ansi", t)
+	testCRC(CRC16ANSILE, "16 ansi le", t)
+	testCRC(CRC16CCITT, "16 ccitt", t)
+	testCRC(CRC24IEEE, "24 ieee", t)
+	testCRC(CRC32IEEE, "32 ieee", t)
+	testCRC(CRC32IEEELE, "32 ieee le", t)
 }
 
-func testCRC(t CRCType, info string) {
+func testCRC(t CRCType, info string, test *testing.T) {
 	if crc, err := CRCNew(t); err != nil {
 		log.Fatal(err)
 	} else {
 		crc.Update(0, []byte("test"))
-		log.Printf("crc %s \"test\": %d", info, crc.Update(0, []byte("test")))
+		test.Logf("crc %s \"test\": %d", info, crc.Update(0, []byte("test")))
 	}
 }

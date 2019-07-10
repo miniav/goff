@@ -1,6 +1,6 @@
 package avcodec
 
-// #include <libavcodec/avcodec.h>
+// #include <codecID.h>
 import "C"
 
 type CodecID C.enum_AVCodecID

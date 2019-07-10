@@ -2,22 +2,21 @@ package avutil
 
 import (
 	"encoding/hex"
-	"log"
 	"testing"
 )
 
 func TestHMacNew(t *testing.T) {
-	testHMac(HMacMD5, "md5")
-	testHMac(HMacSHA1, "sha1")
-	testHMac(HMacSHA224, "sha224")
-	testHMac(HMacSHA256, "sha256")
-	testHMac(HMacSHA384, "sha384")
-	testHMac(HMacSHA512, "sha512")
+	testHMac(HMacMD5, "md5", t)
+	testHMac(HMacSHA1, "sha1", t)
+	testHMac(HMacSHA224, "sha224", t)
+	testHMac(HMacSHA256, "sha256", t)
+	testHMac(HMacSHA384, "sha384", t)
+	testHMac(HMacSHA512, "sha512", t)
 }
 
-func testHMac(t HMacType, info string) {
+func testHMac(t HMacType, info string, test *testing.T) {
 	hmac := HMacNew(t, "test")
 	hmac.Update([]byte("test"))
-	log.Printf("hmac %s \"test\": %s\n", info, hex.EncodeToString(hmac.Final()))
-	log.Printf("hmac %s \"test\": %s\n", info, hex.EncodeToString(HMacCalc(t, "test", []byte("test"))))
+	test.Logf("hmac %s \"test\": %s\n", info, hex.EncodeToString(hmac.Final()))
+	test.Logf("hmac %s \"test\": %s\n", info, hex.EncodeToString(HMacCalc(t, "test", []byte("test"))))
 }

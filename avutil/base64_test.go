@@ -18,6 +18,6 @@ func TestBase64Encode(t *testing.T) {
 	if out, err = Base64Decode(base); err != nil {
 		log.Fatal(err)
 	}
-	log.Println("base64 origin:", str, len(str), []byte(str))
-	log.Println("base64 result:", string(out), len(string(out)), out)
+	t.Log("base64 origin:", str, len(str), []byte(str))
+	t.Log("base64 result:", string(out), len(string(out)), out)
 }

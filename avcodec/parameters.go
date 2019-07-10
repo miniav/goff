@@ -1,6 +1,6 @@
 package avcodec
 
-// #include <libavcodec/avcodec.h>
+// #include <parameters.h>
 import "C"
 
 type Parameters C.AVCodecParameters
