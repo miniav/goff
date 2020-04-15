@@ -5,8 +5,8 @@ services:
     container_name: goff
     hostname: goff
     build: $PWD
-    image: registry.cn-beijing.aliyuncs.com/tosone/goff:dev
+    image: goff:dev
     restart: always
     tty: true
     volumes:
-      - $PWD:/app/src/golang/miniav/goff
+      - $PWD:/app/src/github.com/miniav/goff

@@ -1,14 +1,11 @@
-FROM alpine:edge
+FROM alpine:3.11
 
-# sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories && \
-
-RUN apk update && apk upgrade \
-  && apk add --no-cache mdocml-apropos build-base coreutils ca-certificates autoconf automake libtool \
-  bc tree vim git fish dialog less tzdata ffmpeg-dev go
+RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.aliyun.com/g' /etc/apk/repositories && \
+  apk update && apk upgrade \
+  && apk add --no-cache mdocml-apropos build-base coreutils ca-certificates \
+  tree vim git fish less tzdata ffmpeg-dev go
 
 RUN sed -i "s/bin\/ash/usr\/bin\/fish/" /etc/passwd
-
-RUN echo "set mouse-=a" >> ~/.vimrc
 
 RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
@@ -17,10 +14,11 @@ ENV SHELL /usr/bin/fish
 RUN mkdir -p /root/.config/fish && \
   echo "set -gx GOPATH /app" >> /root/.config/fish/config.fish && \
   echo "set -gx PATH {\$PATH} /app/bin" >> /root/.config/fish/config.fish && \
-  echo "set -gx GO111MODULE on" >> /root/.config/fish/config.fish
+  echo "set -gx GO111MODULE on" >> /root/.config/fish/config.fish && \
+  echo "set -gx GOPROXY https://goproxy.cn,direct" >> /root/.config/fish/config.fish
 
-WORKDIR /app/src/golang/miniav/goff
+WORKDIR /app/src/github.com/miniav/goff
 
-VOLUME /app
+VOLUME /app/src/github.com/miniav/goff
 
-CMD ["/usr/bin/fish"]
+CMD "/usr/bin/fish"

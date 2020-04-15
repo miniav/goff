@@ -1,7 +1,4 @@
-app_name                := goff
-docker_name             := $(app_name)
-docker_tag              := dev
-docker_container        := $(app_name)
+app_name = goff
 
 .PHONY: upgrade
 upgrade:
@@ -9,7 +6,7 @@ upgrade:
 
 .PHONY: build
 build:
-	docker build -t $(docker_name):$(docker_tag) .
+	docker-compose build $(app_name)
 
 .PHONY: run
 run:
@@ -17,4 +14,4 @@ run:
 
 .PHONY: exec
 exec:
-	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /usr/bin/fish
+	docker-compose exec $(app_name) /usr/bin/fish
