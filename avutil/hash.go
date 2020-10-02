@@ -18,18 +18,21 @@ func HashNew(method string) (h *Hash, err error) {
 		return
 	}
 	C.av_hash_init(ctx)
-	h = (*Hash)(ctx)
+	h = ctx
 	return
 }
 
+// Method ..
 func Method(i int) (s string) {
 	return C.GoString(C.av_hash_names(C.int(i)))
 }
 
+// Method ..
 func (h *Hash) Method() string {
 	return C.GoString(C.av_hash_get_name((*C.struct_AVHashContext)(h)))
 }
 
+// Update ..
 func (h *Hash) Update(b []byte) {
 	C.av_hash_update((*C.struct_AVHashContext)(h), (*C.uint8_t)(unsafe.Pointer(&b[0])), C.int(len(b)))
 }
@@ -59,7 +62,7 @@ func (h *Hash) FinalBase64() (o []byte) {
 	return
 }
 
-// HashDestroy ..
+// Destroy ..
 func (h *Hash) Destroy() {
 	ctx := (*C.struct_AVHashContext)(h)
 	C.av_hash_freep(&ctx)

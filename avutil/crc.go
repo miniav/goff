@@ -1,8 +1,6 @@
 package avutil
 
-import "C"
-
-// #include <crc.h>
+// #include <libavutil/crc.h>
 import "C"
 import (
 	"fmt"

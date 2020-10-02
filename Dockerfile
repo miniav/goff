@@ -1,8 +1,8 @@
-FROM alpine:3.11
+FROM alpine:edge
 
 RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.aliyun.com/g' /etc/apk/repositories && \
   apk update && apk upgrade \
-  && apk add --no-cache mdocml-apropos build-base coreutils ca-certificates \
+  && apk add --no-cache build-base coreutils ca-certificates \
   tree vim git fish less tzdata ffmpeg-dev go
 
 RUN sed -i "s/bin\/ash/usr\/bin\/fish/" /etc/passwd

@@ -1,6 +1,6 @@
 package avutil
 
-// #include <base64.h>
+// #include <libavutil/base64.h>
 import "C"
 import (
 	"bytes"
@@ -24,7 +24,7 @@ func Base64Decode(b []byte) (o []byte, err error) {
 
 // Base64Encode 解码
 func Base64Encode(b []byte) (o []byte, err error) {
-	var outSize = C.int((((len(b))+2)/3*4 + 1))
+	var outSize = C.int(((len(b))+2)/3*4 + 1)
 	var gout = make([]byte, outSize)
 	var out = (*C.char)(unsafe.Pointer(&gout[0]))
 	if flag := C.av_base64_encode(out, outSize, (*C.uint8_t)(unsafe.Pointer(&b[0])), C.int(len(b))); flag == nil {

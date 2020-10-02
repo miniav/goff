@@ -1,6 +1,6 @@
 package avutil
 
-// #include <adler32.h>
+// #include <libavutil/adler32.h>
 import "C"
 import "unsafe"
 

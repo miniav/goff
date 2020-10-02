@@ -1,6 +1,6 @@
 package avutil
 
-// #include <common.hpp>
+// #include <common.h>
 import "C"
 
 func FFMax(a, b int) int {

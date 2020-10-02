@@ -10,3 +10,5 @@ ffmpeg-*
 *.gch
 
 .idea/
+
+*.test
