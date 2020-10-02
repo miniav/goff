@@ -18,7 +18,7 @@ func HashNew(method string) (h *Hash, err error) {
 		return
 	}
 	C.av_hash_init(ctx)
-	h = ctx
+	h = (*Hash)(ctx)
 	return
 }
 
