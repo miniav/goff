@@ -1,4 +1,4 @@
-FROM golang:1.15.3-alpine
+FROM golang:alpine
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 

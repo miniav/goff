@@ -32,5 +32,4 @@ jobs:
           version: v1.34
           working-directory: .
       - name: Build test
-        run: |
-          go test ./...
+        run: make test
