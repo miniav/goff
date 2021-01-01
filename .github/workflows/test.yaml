@@ -1,0 +1,36 @@
+name: goff test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  goff:
+    name: goff
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        go: ["1.15", "1.14"]
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: install packages
+        run: sudo apt-get -y -qq install ffmpeg libavformat-dev libavcodec-dev libavfilter-dev libavresample-dev libavutil-dev libavutil-dev libpostproc-dev libavdevice-dev
+      - name: Setup golang
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+      - name: Lint code
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.34
+          working-directory: .
+      - name: Build test
+        run: |
+          go test ./...
