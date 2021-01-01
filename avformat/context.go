@@ -19,7 +19,7 @@ func NewAVFormatContext() *Context {
 }
 
 // OpenInput ..
-func (c *Context) OpenInput(url string, inFmt *InputFormat, options *avutil.AVDictionary) error {
+func (c *Context) OpenInput(url string, inFmt *InputFormat, options *avutil.Dictionary) error {
 	var c_context = (*C.AVFormatContext)(unsafe.Pointer(c))
 	var d_context = (**C.AVFormatContext)(C.malloc(C.ulong(unsafe.Sizeof(c_context))))
 	*d_context = c_context
@@ -51,7 +51,7 @@ func (c *Context) CloseInput() {
 }
 
 // FindStreamInfo ..
-func (c *Context) FindStreamInfo(options *avutil.AVDictionary) error {
+func (c *Context) FindStreamInfo(options *avutil.Dictionary) error {
 	var c_options = (*C.AVDictionary)(unsafe.Pointer(options))
 	var d_options = (**C.AVDictionary)(C.malloc(C.ulong(unsafe.Sizeof(c_options))))
 	*d_options = c_options

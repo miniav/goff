@@ -1,17 +1,13 @@
-app_name = goff
-
-.PHONY: upgrade
-upgrade:
-	docker pull alpine:edge
+image = goff:dev
 
 .PHONY: build
 build:
-	docker-compose build $(app_name)
+	docker build -t $(image) $(PWD)
 
 .PHONY: run
 run:
-	docker-compose up --force-recreate -d
+	docker run -it -v $(PWD):/app/src/github.com/miniav/goff --rm $(image) sh
 
-.PHONY: exec
-exec:
-	docker-compose exec $(app_name) /usr/bin/fish
+.PHONY: lint
+lint:
+	golangci-lint run -v

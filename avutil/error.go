@@ -81,6 +81,9 @@ var AVERROR = AVERRORS{
 
 func init() {
 	// log.Println(AVERROR)
+	var code = errorCode{fmt.Errorf("123"), EAGAIN}
+	code.err = Error(code.code)
+	fmt.Println(code)
 }
 
 // StrError get error description

@@ -1,3 +1,3 @@
 ### Golang binding FFmpeg
 
-Just support linux.
+Just support Linux and macOS.

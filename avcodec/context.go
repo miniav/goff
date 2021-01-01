@@ -28,7 +28,7 @@ func (c *Context) AddParameters(para *Parameters) (err error) {
 }
 
 // Open2 ..
-func (c *Context) Open2(codec *Codec, dict *avutil.AVDictionary) (err error) {
+func (c *Context) Open2(codec *Codec, dict *avutil.Dictionary) (err error) {
 	var c_dict = (*C.AVDictionary)(unsafe.Pointer(dict))
 	var d_dict = (**C.AVDictionary)(C.malloc(C.ulong(unsafe.Sizeof(c_dict))))
 	*d_dict = c_dict
