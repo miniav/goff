@@ -12,7 +12,7 @@ type Hash C.struct_AVHashContext
 
 // HashNew ..
 func HashNew(method string) (h *Hash, err error) {
-	var ctx = &C.struct_AVHashContext{}
+	var ctx *C.struct_AVHashContext
 	if code := int(C.av_hash_alloc(&ctx, C.CString(method))); code < 0 {
 		err = fmt.Errorf("init %s with code: %d", method, code)
 		return

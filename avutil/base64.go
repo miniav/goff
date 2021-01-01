@@ -17,7 +17,6 @@ func Base64Decode(b []byte) (o []byte, err error) {
 		err = fmt.Errorf("cannot decode: %s", string(b))
 		return
 	}
-
 	o = bytes.Trim(gout, "\x00")
 	return
 }
