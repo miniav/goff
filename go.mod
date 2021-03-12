@@ -1,3 +1,3 @@
-module github.com/tosone/goff
+module github.com/miniav/goff
 
-go 1.15
+go 1.16

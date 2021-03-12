@@ -7,8 +7,8 @@ import (
 	"log"
 	"unsafe"
 
-	"github.com/tosone/goff/avcodec"
-	"github.com/tosone/goff/avutil"
+	"github.com/miniav/goff/avcodec"
+	"github.com/miniav/goff/avutil"
 )
 
 type Context C.AVFormatContext

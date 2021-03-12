@@ -1,12 +1,12 @@
 image = goff:dev
 
-.PHONY: build
-build:
+.PHONY: image
+image:
 	docker build -t $(image) $(PWD)
 
-.PHONY: run
-run:
-	docker run -it -v $(PWD):/app/src/github.com/miniav/goff --rm $(image) sh
+.PHONY: docker-run
+docker-run:
+	docker run -it -v $(PWD):/app/src/github.com/miniav/goff --rm $(image) /bin/sh
 
 .PHONY: lint
 lint:
@@ -14,4 +14,4 @@ lint:
 
 .PHONY: test
 test:
-	go test ./...
+	go test -v ./...

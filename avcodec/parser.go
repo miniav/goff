@@ -2,11 +2,12 @@ package avcodec
 
 // #include <parser.h>
 import "C"
+
 // import (
 // 	// "errors"
 // 	// "unsafe"
 
-// 	// "github.com/tosone/goff/avutil"
+// 	// "github.com/miniav/goff/avutil"
 // )
 
 type ParserContext C.AVCodecParserContext

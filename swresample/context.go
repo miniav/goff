@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/tosone/goff/avutil"
+	"github.com/miniav/goff/avutil"
 )
 
 type Context C.struct_SwrContext

@@ -1,3 +1,3 @@
-### Golang binding FFmpeg
+# GoFF
 
-Just support Linux and macOS.
+Golang binding FFmpeg, just support Linux and MacOS.
