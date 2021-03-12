@@ -1,6 +1,5 @@
 package avutil
 
-
 // #include <libavutil/cpu.h>
 // #include <stddef.h>
 import "C"

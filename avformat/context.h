@@ -13,5 +13,5 @@ int find_audio_stream_index(AVFormatContext *c) {
 }
 
 enum AVCodecID get_audio_stream_codec_id(AVFormatContext *c, int index) {
-    return c->streams[index]->codecpar->codec_id;
+  return c->streams[index]->codecpar->codec_id;
 }

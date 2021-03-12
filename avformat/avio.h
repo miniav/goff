@@ -11,7 +11,7 @@ typedef struct buffer_data {
   size_t size;
 } buffer_data;
 
-pthread_mutex_t buffer_in_mutex  = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t buffer_in_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t buffer_out_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 buffer_data buffer_in, buffer_out;
@@ -35,7 +35,7 @@ int read_packet(void *opaque, uint8_t *buf, int buf_size) {
 
 int input_buffer(uint8_t *buf, int buf_size) {
   pthread_mutex_lock(&buffer_in_mutex);
-  buffer_in.ptr = malloc(buf_size * sizeof(uint8_t));
+  buffer_in.ptr = (uint8_t *)malloc(buf_size * sizeof(uint8_t));
   memcpy(buffer_in.ptr, buf, buf_size);
   buffer_in.size += buf_size;
   printf("input buffer: %d %lu\n", buf_size, buffer_in.size);
@@ -45,8 +45,7 @@ int input_buffer(uint8_t *buf, int buf_size) {
 
 AVIOContext *avio_alloc_read_context(unsigned char *buffer, int buffer_size) {
   av_log_set_level(AV_LOG_TRACE);
-  return avio_alloc_context(buffer, buffer_size, 0, NULL, &read_packet, NULL,
-                            NULL);
+  return avio_alloc_context(buffer, buffer_size, 0, NULL, &read_packet, NULL, NULL);
 }
 
 void set_avfmt_avio(AVFormatContext *fmt_ctx, AVIOContext *avio_ctx) {
